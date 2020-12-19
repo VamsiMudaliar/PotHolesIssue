@@ -1,4 +1,4 @@
-{% include "header.html" %}
+{% extends "header.html" %}
 
 
 {% block content %}
@@ -12,5 +12,17 @@
   </button>
 </div>
 {% endfor %}
-
+{% for item in items %}
+<div class="card shadow mt-4" style="width: 18rem;">
+    <img class="card-img-top img img-thumbnail " src="media/{{ item.issue_img }}" alt="Nothing to show ">
+    <div class="card-body">
+      <h5 class="card-title">{{item.issue_title}}</h5>
+      <p class="card-text">Location : {{  item.location }}</p>
+      <p class="card-text">Posted By : {{  item.author.email }}</p>
+      <p class="card-text">Posted On : {{  item.pub_date }}</p>
+      <a href="#" class="btn btn-primary">Read More</a>
+    </div>
+  </div>
+  
+{% endfor %}
 {% endblock content %}

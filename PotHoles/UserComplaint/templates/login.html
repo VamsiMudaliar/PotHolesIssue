@@ -19,7 +19,7 @@
     {% endfor %}
     <form action="{% url 'login' %}" class="form-group" method="POST"> {% csrf_token %}
         <label class="ml-2">Email :</label>
-        <input type="text" name="email" class="form-control mb-2" placeholder="Enter Your Email" autofocus=True>
+        <input type="text" name="uname" class="form-control mb-2" placeholder="Enter Your Email" autofocus=True>
         <label class="ml-2">Password :</label>
         <input type="password" name="password" class="form-control mb-2" placeholder="Enter your Password">
         <input type="submit" class="btn btn-outline-primary mt-2">

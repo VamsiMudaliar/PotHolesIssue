@@ -1,4 +1,4 @@
-{% include "header.html" %}
+{% extends "header.html" %}
 
 {% block content %}
 
@@ -16,13 +16,14 @@
       </div>
       {% endfor %}
 
-        <form action="{% url '' %}" class="form-group" method="POST">{% csrf_token %}
-            <label class="ml-2">Username :</label>
-            <input type="text" name="uname" class="form-control mb-2" placeholder="Enter Your Username">
-            <label class="ml-2">Email :</label>
-            <input type="text" name="email" class="form-control mb-2" placeholder="Enter Your Email">
-            <label class="ml-2">Password :</label>
-            <input type="password" name="password" class="form-control mb-2" placeholder="Enter your Password">
+        <form action="{% url 'addIssue' %}" class="form-group" method="POST" enctype="multipart/form-data">{% csrf_token %}
+            {% csrf_token %}
+            <label class="ml-2">Issue Title :</label>
+            <input type="text" name="issueTitle" class="form-control mb-2" placeholder="Your Issue title">
+            <label class="ml-2">Location :</label>
+            <input type="text" name="location" class="form-control mb-2" placeholder="Location">
+            <label class="ml-2 p-2">Upload an Image:</label>
+            <input type="file" name="IssueImage" ><br>
             <input type="submit" class="btn btn-outline-primary mt-2">
         </form>
     </div>
