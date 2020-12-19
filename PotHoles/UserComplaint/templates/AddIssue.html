@@ -1,0 +1,31 @@
+{% include "header.html" %}
+
+{% block content %}
+
+<br>
+    <div class="col-lg-6 offset-3 p-4 shadow">
+    <div class="d-flex flex-column justify-content-center">
+        <h2 class="text-primary text-center">Add Issue</h2><br>  
+      {% for message in messages %}
+
+      <div class="alert alert-{{ message.tags }} alert-dismissible fade show " role="alert">
+        <strong>Message :</strong> {{ message }}
+        <button type="button" class="close btn " data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      {% endfor %}
+
+        <form action="{% url '' %}" class="form-group" method="POST">{% csrf_token %}
+            <label class="ml-2">Username :</label>
+            <input type="text" name="uname" class="form-control mb-2" placeholder="Enter Your Username">
+            <label class="ml-2">Email :</label>
+            <input type="text" name="email" class="form-control mb-2" placeholder="Enter Your Email">
+            <label class="ml-2">Password :</label>
+            <input type="password" name="password" class="form-control mb-2" placeholder="Enter your Password">
+            <input type="submit" class="btn btn-outline-primary mt-2">
+        </form>
+    </div>
+  </div>
+
+{% endblock content %}
