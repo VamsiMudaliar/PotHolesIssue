@@ -1,0 +1,33 @@
+{% extends "header.html" %}
+
+{% block content %}
+<br>
+    <div class="col-lg-6 offset-3 p-4 shadow">
+    <div class="d-flex flex-column justify-content-center">
+        <h2 class="text-primary text-center">Update Issue</h2><br>  
+      {% for message in messages %}
+
+      <div class="alert alert-{{ message.tags }} alert-dismissible fade show " role="alert">
+        <strong>Message :</strong> {{ message }}
+        <button type="button" class="close btn " data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      {% endfor %}
+      
+    {% if hello %}
+      <form class="form-group" action="#" method="POST" enctype="multipart/form-data">{% csrf_token %}
+            <label>Title :</label> <br>
+            <input type="text" class="form-control" name="title" value="{{ hello.issue_title }}" required=true ><br>
+            
+            <label>Location :</label><br>
+            <input type="text" class="form-control" name="location" value=" {{ hello.location }}" required=true ><br>
+
+            <label> Upload Pic : </label><br>
+            <input type="file" class="form-control" name="abc" value="{{ hello.issue_img }}" required=true><br>
+            <input type="submit" class="btn btn-success" value="Update"><br>
+      </form>
+    {% endif %}
+</div></div>
+{% endblock content %}
+      

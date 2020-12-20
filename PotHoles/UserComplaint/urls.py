@@ -9,5 +9,6 @@ urlpatterns = [
     path('addIssue/', views.addIssue, name="addIssue"),
     path('logout/', views.logout, name="logout"),
     path('myIssues/', views.myIssues, name="myIssues"),
-    path('deleteIssue/<int:issueid>', views.deleteIssue, name="deleteIssue")
+    path('deleteIssue/<int:issueid>', views.deleteIssue, name="deleteIssue"),
+    path('updateIssue/<int:issueid>', views.updateIssue, name="updateIssue"),
 ]
