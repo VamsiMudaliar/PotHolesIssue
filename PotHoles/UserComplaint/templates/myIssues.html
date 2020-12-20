@@ -25,7 +25,7 @@
       <p class="card-text">Location : {{  issue.location }}</p>
       <p class="card-text">Posted By : {{  issue.author.email }}</p>
       <p class="card-text">Posted On : {{  issue.pub_date }}</p>
-      <p class="card-text">Upvotes : {{  issue.upvotes }}</p>
+      <p class="card-text">Upvotes : {{  issue.upvotes.all.count }}</p>
       <div style="display: inline-block;">
         <a href="../updateIssue/{{ issue.issue_id }}" class="btn btn-success">Update</a>
         <a href="../deleteIssue/{{ issue.issue_id }}" class="btn btn-danger">Delete</a>

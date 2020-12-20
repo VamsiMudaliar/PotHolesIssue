@@ -1,0 +1,66 @@
+{% extends "header.html" %}
+
+{% block content %}
+<br>
+{% if issue %} 
+<div class="col-lg-7  offset-2 p-4 shadow">
+    <h2 class="text-primary text-center">{{issue.issue_title}}</h2><br>  
+      {% for message in messages %}
+
+      <div class="alert alert-{{ message.tags }} alert-dismissible fade show " role="alert">
+        <strong>Message :</strong> {{ message }}
+        <button type="button" class="close btn " data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      {% endfor %}
+    <div class="row">
+        <div class="d-flex flex-row col-lg-2">
+            <form action="{% url 'likePost' issue.issue_id %}" method="POST"> {% csrf_token %}
+            {% if issue.author not in issue.upvotes.all %}
+            <button type="submit" class="btn btn-success positive">Like</button><br>
+            {% else %}
+            <button type="submit" class="btn btn-danger negative">UnLike</button><br>
+            {% endif %}
+            <strong class="text-center my-4"><span>{{ issue.upvotes.all.count }}</span> Likes</strong>
+            </form>
+        </div>
+
+        <div class="col-lg-10">  
+            <img class="card-img-top" src="../media/{{ issue.issue_img }}/" alt="Card image cap">
+        </div>
+    </div><br>
+
+    <b>Location :</b> <p class="card-text"> {{  issue.location }}</p><br>
+      <strong>Posted By :</strong><p class="card-text"> {{  issue.author.email }}</p><br>
+      <strong>Posted On :</strong><p class="card-text"> {{  issue.pub_date }}</p><br>
+      
+ 
+<h2 class="p-2">Comments :</h2>
+<div class="col-lg-6">
+    <div class="row">
+    <form action = "{% url 'postComment' issue.issue_id  %}" class="form-group p-4" method="POST"> {% csrf_token %}
+        <input type="text" name="comment" class="form control" >
+        <input type="submit" class="btn btn-success " value="Submit">
+    </form>
+    </div>
+{% endif %}
+    
+{% for comment in comments %}
+<div class="row mb-2">
+        <div class="col-lg-4 col-md-2 ">
+            <img src = "" class="img img-thumbnail">
+        </div>
+        <div class="col-lg-8 col-md-10">
+            <p>{{comment.comment}}</p>
+            <p>{{comment.user.email}}</p>
+            <p>{{comment.timestamp}}</p>
+        </div>
+    </div>
+{% endfor %}
+</div>
+
+
+  </div>
+
+{% endblock content %}

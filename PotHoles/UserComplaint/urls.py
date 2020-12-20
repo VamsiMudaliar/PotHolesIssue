@@ -11,4 +11,10 @@ urlpatterns = [
     path('myIssues/', views.myIssues, name="myIssues"),
     path('deleteIssue/<int:issueid>', views.deleteIssue, name="deleteIssue"),
     path('updateIssue/<int:issueid>', views.updateIssue, name="updateIssue"),
+    path('viewIssue/<int:issueid>', views.viewIssue, name="viewIssue"),
+    path('likePost/<int:issueid>', views.likePost, name="likePost"),
+
+    path('postComment/<int:issueid>', views.postComment, name="postComment"),
+
+
 ]
